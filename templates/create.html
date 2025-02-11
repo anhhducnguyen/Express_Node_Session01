@@ -71,9 +71,13 @@
             /* transform: skewX(-20deg); */
             display: flex;
             transition: all 0.5s;
-            border-radius: 20px;
-            width: 40rem;
+            border-radius: 10px;
+            width: 80rem;
 
+        }
+
+        .create-form {
+            width: 94%;
         }
 
         .card .search-form {
@@ -109,7 +113,7 @@
         .card form button {
             height: 5rem;
             padding: .5rem 1rem;
-            margin-left: 8rem;
+            margin-left: 27.5rem;
             margin-top: 1.5rem;
             background-color: #e55a5a;
             border: none;
@@ -234,35 +238,38 @@ font-size: 5.5rem;
         <div class="container">
             <h1>🥦 Create your fruits 🌽</h1>
             <figure class="card">
-                <form method="POST" class="create-form">
+                <form id="createProductForm" method="POST" class="create-form">
                     <div class="input-wrapper">
-                        <input type="text" name="productName"
+                        <input type="text" name="productName" id="productName"
                             placeholder="Product Name">
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" name="image" placeholder="Image">
+                        <input type="text" name="image" id="image" 
+                            placeholder="Image">
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" name="from" placeholder="Country">
+                        <input type="text" name="from" id="from" 
+                            placeholder="Country">
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" name="nutrients"
+                        <input type="text" name="nutrients" id="nutrients"
                             placeholder="Nutrients">
                     </div>
                     <div class="input-wrapper">
-                        <input type="number" name="quantity"
+                        <input type="number" name="quantity" id="quantity"
                             placeholder="Quantity">
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" name="price" placeholder="Price">
+                        <input type="text" name="price" id="price" 
+                            placeholder="Price">
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" name="description"
-                            placeholder="Product Name">
+                        <input type="text" name="description" id="description"
+                            placeholder="Description">
                     </div>
                     <div class="input-wrapper checkbox">
                         <input id="box" name="organic" type="checkbox"
-                            checked="true" />
+                            checked />
                         <label class="box-label" for="">
                             Organic
                         </label>
@@ -274,4 +281,20 @@ font-size: 5.5rem;
             </figure>
         </div>
     </body>
+    <script>
+        document.getElementById("createProductForm").addEventListener("submit", function(e) {
+            const productName = document.getElementById("productName").value.trim();
+            const image = document.getElementById("image").value.trim();
+            const from = document.getElementById("from").value.trim();
+            const nutrients = document.getElementById("nutrients").value.trim();
+            const quantity = document.getElementById("quantity").value.trim();
+            const price = document.getElementById("price").value.trim();
+            const description = document.getElementById("description").value.trim();
+
+            if (!productName || !image || !from || !nutrients || !quantity || !price || !description) {
+                alert("Invalid Input");
+                e.preventDefault();
+            }
+        });
+    </script>
 </html>
